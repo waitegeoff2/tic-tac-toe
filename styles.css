@@ -26,8 +26,46 @@
     padding: 20px;
 }
 
+/* border nonsense below */
+
 .one, .two, .three, .four, .five, .six, .seven, .eight, .nine {
     border: 1px solid black;
     background-color: rgb(246, 246, 246);
 
+}
+
+.one {
+    border-top: none;
+    border-left: none;
+}
+
+.two {
+    border-top: none;
+}
+
+.three {
+    border-top: none;
+    border-right: none;
+}
+
+.four {
+    border-left: none;
+}
+
+.six {
+    border-right: none; 
+}
+
+.seven {
+    border-left: none;
+    border-bottom: none;
+}
+
+.eight {
+    border-bottom: none; 
+}
+
+.nine {
+    border-right: none;
+    border-bottom: none;
 }
