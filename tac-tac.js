@@ -1,5 +1,7 @@
 const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
+console.log(typeof(gameBoard[0]));
+
 
 const playerOne = {name:"playerOne", piece: "x"};
 const playerTwo = {name:"playerTwo", piece: "o"};
@@ -84,7 +86,11 @@ function checkWin() {
     } else if ((gameBoard[2] == "o") && (gameBoard[4]=="o") && (gameBoard[6]=="o")) {
         alert("player two wins!")
         resetGame();
-    } //STALEMATE CONDITION
+    } else if ((gameBoard[0] != 0) && (gameBoard[1] != 1) && (gameBoard[2] != 2) && (gameBoard[3] != 3) && (gameBoard[4] != 4) && (gameBoard[5] != 5) && (gameBoard[6] != 6) && (gameBoard[7] != 7) && (gameBoard[8] != 8)) {
+        alert("it's a tie!");
+        resetGame();
+    }
+    // Tie condition: none of the array items equal their original numbers.
 }
 
 function resetGame() {
@@ -92,7 +98,7 @@ function resetGame() {
     gameBoard.splice(0, 9, 1, 2, 3, 4, 5, 6, 7, 8);
 }
 
-// gameFlow();
+gameFlow();
 
 
 
