@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    height: 10vh;
+}
+
+.mid-page {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(193, 168, 193);
+    height: 90vh;
+}
+
+.tac-grid {
+    display: grid;
+    grid-template: 150px 150px 150px / 150px 150px 150px;
+    padding: 20px;
+}
+
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine {
+    border: 1px solid black;
+    background-color: rgb(246, 246, 246);
+
+}

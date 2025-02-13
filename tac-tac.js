@@ -12,12 +12,10 @@ function gameFlow() {
     }
 }
 
-
-
 //take P1's choice, check if valid, and update the array
 
 function playerOneUpdate() {
-    //choice
+    //choice BUTTONS
     let oneChoice = prompt("What does player one choose?");
 
     //check if choice is valid, update board, otherwise try again
@@ -51,13 +49,7 @@ function playerTwoUpdate() {
     console.log(gameBoard);
 }
 
-
-
-//012
-//345
-//678
-
-//check if P1 won the game
+//check if anyone won the game
 
 function checkWin() {
     //check if play met win conditions, if so, alert them, then reset game board
@@ -100,7 +92,12 @@ function resetGame() {
     gameBoard.splice(0, 9, 1, 2, 3, 4, 5, 6, 7, 8);
 }
 
-gameFlow();
+// gameFlow();
+
+
+
+
+
 
 
 // OLD CODE
