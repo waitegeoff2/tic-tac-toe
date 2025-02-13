@@ -4,22 +4,23 @@ const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 const playerOne = {name:"playerOne", piece: "x"};
 const playerTwo = {name:"playerTwo", piece: "o"};
 
-function gameFlow () {
-    // LOOP
-    //p1 choice
-    //update board
-    //check win condition
-
-    //p2 choice
-    //update board
-    //check win condition
+function gameFlow() {
+    //loops a player one turn and then a player two turn
+    for (let i = 0; i<9; i++) {
+        playerOneUpdate();
+        playerTwoUpdate();
+    }
 }
+
+
 
 //take P1's choice, check if valid, and update the array
 
 function playerOneUpdate() {
+    //choice
     let oneChoice = prompt("What does player one choose?");
 
+    //check if choice is valid, update board, otherwise try again
     if ((gameBoard[oneChoice] != "x") && (gameBoard[oneChoice] != "o")) {
         gameBoard.splice(oneChoice, 1, "x");
     } else {
@@ -27,9 +28,10 @@ function playerOneUpdate() {
         playerOneUpdate();
     };
 
-    console.log(gameBoard);
-
+    //check if anyone won
     checkWin();
+
+    console.log(gameBoard);
 }
 
 //take P2's choice, check if valid, and update the array
@@ -44,9 +46,9 @@ function playerTwoUpdate() {
         playerTwoUpdate();
     };
 
-    console.log(gameBoard);
-
     checkWin();
+
+    console.log(gameBoard);
 }
 
 
@@ -58,59 +60,47 @@ function playerTwoUpdate() {
 //check if P1 won the game
 
 function checkWin() {
+    //check if play met win conditions, if so, alert them, then reset game board
+
     if ((gameBoard[0] == "x") && (gameBoard[1]=="x") && (gameBoard[2]=="x")) {
         alert("player one wins!")
+        resetGame();
     } else if ((gameBoard[3] == "x") && (gameBoard[4]=="x") && (gameBoard[5]=="x")) {
         alert("player one wins!")
+        resetGame();
     } else if ((gameBoard[6] == "x") && (gameBoard[7]=="x") && (gameBoard[8]=="x")) {
         alert("player one wins!")
+        resetGame();
     } else if ((gameBoard[0] == "x") && (gameBoard[4]=="x") && (gameBoard[8]=="x")) {
         alert("player one wins!")
+        resetGame();
     } else if ((gameBoard[2] == "x") && (gameBoard[4]=="x") && (gameBoard[6]=="x")) {
         alert("player one wins!")
-    } else if ((gameBoard[0] == "x") && (gameBoard[1]=="x") && (gameBoard[2]=="o")) {
+        resetGame();
+    } else if ((gameBoard[0] == "o") && (gameBoard[1]=="o") && (gameBoard[2]=="o")) {
         alert("player two wins!")
-    } else if ((gameBoard[3] == "x") && (gameBoard[4]=="x") && (gameBoard[5]=="o")) {
+        resetGame();
+    } else if ((gameBoard[3] == "o") && (gameBoard[4]=="o") && (gameBoard[5]=="o")) {
         alert("player two wins!")
-    } else if ((gameBoard[6] == "x") && (gameBoard[7]=="x") && (gameBoard[8]=="o")) {
+        resetGame();
+    } else if ((gameBoard[6] == "o") && (gameBoard[7]=="o") && (gameBoard[8]=="o")) {
         alert("player two wins!")
-    } else if ((gameBoard[0] == "x") && (gameBoard[4]=="x") && (gameBoard[8]=="o")) {
+        resetGame();
+    } else if ((gameBoard[0] == "o") && (gameBoard[4]=="o") && (gameBoard[8]=="o")) {
         alert("player two wins!")
-    } else if ((gameBoard[2] == "x") && (gameBoard[4]=="x") && (gameBoard[6]=="o")) {
+        resetGame();
+    } else if ((gameBoard[2] == "o") && (gameBoard[4]=="o") && (gameBoard[6]=="o")) {
         alert("player two wins!")
-    }
+        resetGame();
+    } //STALEMATE CONDITION
 }
 
-function checkTwoWin() {
-    if ((gameBoard[0] && gameBoard[1] && gameBoard[2]) == "o") {
-        alert("player two wins!")
-    } else if ((gameBoard[3] && gameBoard[4] && gameBoard[5]) == "o") {
-        alert("player two wins!")
-    } else if ((gameBoard[6] && gameBoard[7] && gameBoard[8]) == "o") {
-        alert("player two wins!")
-    } else if ((gameBoard[0] && gameBoard[4] && gameBoard[8]) == "o") {
-        alert("player two wins!")
-    } else if ((gameBoard[2] && gameBoard[4] && gameBoard[6]) == "o") {
-        alert("player two wins!")
-    }  
+function resetGame() {
+    //Reset Board: remove 9 elements, starting at index 0, replace with original values.
+    gameBoard.splice(0, 9, 1, 2, 3, 4, 5, 6, 7, 8);
 }
 
-
-function resetGame () {
-    gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-}
-
-
-playerOneUpdate();
-playerTwoUpdate();
-playerOneUpdate();
-playerTwoUpdate();
-playerOneUpdate();
-playerTwoUpdate();
-playerOneUpdate();
-playerTwoUpdate();
-
-
+gameFlow();
 
 
 // OLD CODE
