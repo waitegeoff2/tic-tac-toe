@@ -37,22 +37,12 @@ function gameFlow(choice) {
     console.log(turn);
 };
 
-
-//CLICK
-//turn=0;
-//gameflow (handle choice)
-//
-//turn++
-
-//take P1's choice, check if valid, and update the array
-
-function playerOneUpdate(choice) {
-    
+function playerOneUpdate(choice) {    
 
     //check if choice is valid, update board, otherwise try again
     if ((gameBoard[choice] != "x") && (gameBoard[choice] != "o")) {
         gameBoard.splice(choice, 1, "x"); // MAKE THIS UPDATE THE DIV TOO
-        // boxOne.textContent = gameboard.INDEX put it right on there
+        gameBoardUpdatePOne(choice);
     } else {
         alert("choose again");
         playerOneUpdate(choice);
@@ -61,13 +51,13 @@ function playerOneUpdate(choice) {
     checkWin();
 
 }
-
 //take P2's choice, check if valid, and update the array
 
 function playerTwoUpdate(choice) {
 
     if ((gameBoard[choice] != "x") && (gameBoard[choice] != "o")) {
         gameBoard.splice(choice, 1, "o");
+        gameBoardUpdatePTwo(choice);
     } else {
         alert("choose again");
         playerTwoUpdate(choice);
@@ -79,6 +69,50 @@ function playerTwoUpdate(choice) {
 }
 
 //check if anyone won the game
+
+function gameBoardUpdatePOne(choice) {
+    if (choice == 0) {
+        boxOne.textContent = "x";
+    } else if (choice == 1) {
+        boxTwo.textContent = "x"; 
+    } else if (choice == 2) {
+        boxThree.textContent = "x"; 
+    } else if (choice == 3) {
+        boxFour.textContent = "x"; 
+    } else if (choice == 4) {
+        boxFive.textContent = "x"; 
+    } else if (choice == 5) {
+        boxSix.textContent = "x";
+    } else if (choice == 6) {
+        boxSeven.textContent = "x"; 
+    } else if (choice == 7) {
+        boxEight.textContent = "x"; 
+    } else if (choice == 8) {
+        boxNine.textContent = "x";
+    }
+}
+
+function gameBoardUpdatePTwo (choice) {
+    if (choice == 0) {
+        boxOne.textContent = "o";
+    } else if (choice == 1) {
+        boxTwo.textContent = "o"; 
+    } else if (choice == 2) {
+        boxThree.textContent = "o"; 
+    } else if (choice == 3) {
+        boxFour.textContent = "o"; 
+    } else if (choice == 4) {
+        boxFive.textContent = "o"; 
+    } else if (choice == 5) {
+        boxSix.textContent = "o";
+    } else if (choice == 6) {
+        boxSeven.textContent = "o"; 
+    } else if (choice == 7) {
+        boxEight.textContent = "o"; 
+    } else if (choice == 8) {
+        boxNine.textContent = "o";
+    }
+}
 
 function checkWin() {
     //check if play met win conditions, if so, alert them, then reset game board
@@ -123,6 +157,15 @@ function checkWin() {
 function resetGame() {
     //Reset Board: remove 9 elements, starting at index 0, replace with original values.
     gameBoard.splice(0, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8);
+    boxOne.textContent="";
+    boxTwo.textContent="";
+    boxThree.textContent="";
+    boxFour.textContent="";
+    boxFive.textContent="";
+    boxSix.textContent="";
+    boxSeven.textContent="";
+    boxEight.textContent="";
+    boxNine.textContent="";
 }
 
 // SET DIV HOVERS to player choice. Put this IN THE FUNCTION FOR EACH TURN????
