@@ -8,7 +8,7 @@ const boxSeven = document.querySelector(".seven");
 const boxEight = document.querySelector(".eight");
 const boxNine = document.querySelector(".nine");
 const newGame = document.querySelector(".new-game");
-
+const gameStatus = document.querySelector(".status");
 
 const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -22,8 +22,10 @@ function gameFlow(choice) {
     //switch turns each time
     if (turn % 2 == 0) {
        playerOneUpdate(choice);
+       gameStatus.textContent = "Player two's turn"
     } else {
        playerTwoUpdate(choice);
+       gameStatus.textContent = "Player one's turn"
     };
 
     turn++;
@@ -45,10 +47,12 @@ function playerOneUpdate(choice) {
         playerOneUpdate(choice);
     };
 
-    checkWin();
+    //check if someone won
 
+    checkWin();
 }
-//take P2's choice, check if valid, and update the array
+
+//take P2's choice, check if valid, and update the array and divs
 
 function playerTwoUpdate(choice) {
 
@@ -61,61 +65,7 @@ function playerTwoUpdate(choice) {
     };
 
     checkWin();
-
-    console.log(gameBoard);
 }
-
-// update game board each time, I know there's a better way of doing this....
-
-function gameBoardUpdatePOne(choice) {
-    if (choice == 0) {
-        boxOne.textContent = "x";
-    } else if (choice == 1) {
-        boxTwo.textContent = "x"; 
-    } else if (choice == 2) {
-        boxThree.textContent = "x"; 
-    } else if (choice == 3) {
-        boxFour.textContent = "x"; 
-    } else if (choice == 4) {
-        boxFive.textContent = "x"; 
-    } else if (choice == 5) {
-        boxSix.textContent = "x";
-    } else if (choice == 6) {
-        boxSeven.textContent = "x"; 
-    } else if (choice == 7) {
-        boxEight.textContent = "x"; 
-    } else if (choice == 8) {
-        boxNine.textContent = "x";
-    }
-}
-
-function gameBoardUpdatePTwo (choice) {
-    if (choice == 0) {
-        boxOne.textContent = "o";
-    } else if (choice == 1) {
-        boxTwo.textContent = "o"; 
-    } else if (choice == 2) {
-        boxThree.textContent = "o"; 
-    } else if (choice == 3) {
-        boxFour.textContent = "o"; 
-    } else if (choice == 4) {
-        boxFive.textContent = "o"; 
-    } else if (choice == 5) {
-        boxSix.textContent = "o";
-    } else if (choice == 6) {
-        boxSeven.textContent = "o"; 
-    } else if (choice == 7) {
-        boxEight.textContent = "o"; 
-    } else if (choice == 8) {
-        boxNine.textContent = "o";
-    }
-}
-
-//check if anyone won the game
-
-//012
-//345
-//678
 
 function checkWin() {
     //check if play met win conditions, if so, alert them, then reset game board
@@ -175,6 +125,52 @@ function checkWin() {
     // Tie condition: none of the array items equal their original numbers.
 }
 
+// update game board each time, I know there's a better way of doing this....
+
+function gameBoardUpdatePOne(choice) {
+    if (choice == 0) {
+        boxOne.textContent = "x";
+    } else if (choice == 1) {
+        boxTwo.textContent = "x"; 
+    } else if (choice == 2) {
+        boxThree.textContent = "x"; 
+    } else if (choice == 3) {
+        boxFour.textContent = "x"; 
+    } else if (choice == 4) {
+        boxFive.textContent = "x"; 
+    } else if (choice == 5) {
+        boxSix.textContent = "x";
+    } else if (choice == 6) {
+        boxSeven.textContent = "x"; 
+    } else if (choice == 7) {
+        boxEight.textContent = "x"; 
+    } else if (choice == 8) {
+        boxNine.textContent = "x";
+    }
+}
+
+function gameBoardUpdatePTwo (choice) {
+    if (choice == 0) {
+        boxOne.textContent = "o";
+    } else if (choice == 1) {
+        boxTwo.textContent = "o"; 
+    } else if (choice == 2) {
+        boxThree.textContent = "o"; 
+    } else if (choice == 3) {
+        boxFour.textContent = "o"; 
+    } else if (choice == 4) {
+        boxFive.textContent = "o"; 
+    } else if (choice == 5) {
+        boxSix.textContent = "o";
+    } else if (choice == 6) {
+        boxSeven.textContent = "o"; 
+    } else if (choice == 7) {
+        boxEight.textContent = "o"; 
+    } else if (choice == 8) {
+        boxNine.textContent = "o";
+    }
+}
+
 function resetGame() {
     //Reset Board: remove 9 elements, starting at index 0, replace with original values.
     gameBoard.splice(0, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8);
@@ -189,11 +185,9 @@ function resetGame() {
     boxEight.textContent="";
     boxNine.textContent="";
     
-    //restart turns
-    turn = 2;
 }
 
-// SET DIV HOVERS to player choice. Put this IN THE FUNCTION FOR EACH TURN????
+// Each div click = choice.
 
 boxOne.addEventListener('click', () => {
     if ((gameBoard[0] != "x") && (gameBoard[0] != "o")) {
@@ -279,104 +273,6 @@ boxNine.addEventListener('click', () => {
 newGame.addEventListener('click', () => {
     //player name information (dialogs and modals)
     resetGame();
-    turn = 0;
+    turn = 2;
     console.log(gameBoard);
 });
-
-//P2
-
-// boxOne.addEventListener('click', () => {
-//     twoChoice = 0;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxTwo.addEventListener('click', () => {
-//     twoChoice = 1;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxThree.addEventListener('click', () => {
-//     twoChoice = 2;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxFour.addEventListener('click', () => {
-//     twoChoice = 3;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxFive.addEventListener('click', () => {
-//     twoChoice = 4;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxSix.addEventListener('click', () => {
-//     twoChoice = 5;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxSeven.addEventListener('click', () => {
-//     twoChoice = 6;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxEight.addEventListener('click', () => {
-//     twoChoice = 7;
-//     playerTwoUpdate(twoChoice);
-// });
-
-// boxNine.addEventListener('click', () => {
-//     twoChoice = 8;
-//     playerTwoUpdate(twoChoice);
-// });
-
-
-
-
-
-// gameFlow();
-
-
-
-
-
-// function assignTurn(choice) {
-//     if (turn % 2 ==0) {
-//         choice = oneChoice;
-
-//         playerOneUpdate(oneChoice);
-
-//     } else {
-//         choice ==  
-//     }
-// }
-
-// OLD CODE
-
-// function getPlayerOneChoice() {
-//     let oneChoice = prompt("What does player one choose?");
-//     console.log(oneChoice); 
-//     return oneChoice;
-//     //run updateboard
-// }
-
-// function getPlayerTwoChoice () {
-//     let twoChoice = prompt("What does player two choose?");
-//     console.log(twoChoice); 
-//     return twoChoice;
-//     // run updateboard
-// }
-
-// function updateBoardOne(choice) {
-//     // take the choice (number), go to that, splice it out and add an x.
-//     gameBoard.splice(choice, 1, "x");
-// }
-
-// function updateBoardTwo(choice) {
-//     gameBoard.splice(choice, 1, "o");
-// }
-
-
-
-
-
