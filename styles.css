@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    height: 15vh;
+    height: 10vh;
 }
 
 .mid-page {
@@ -18,12 +18,26 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(193, 168, 193);
-    height: 85vh;
+    height: 60vh;
+}
+
+.bottom-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(193, 168, 193);
+    height: 30vh;
 }
 
 .tac-grid {
     display: grid;
     grid-template: 150px 150px 150px / 150px 150px 150px;
+}
+
+.new-game {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
 }
 
 .content {
@@ -34,8 +48,8 @@
 /* border nonsense below */
 
 .one, .two, .three, .four, .five, .six, .seven, .eight, .nine {
-    border: 1px solid black;
-    background-color: rgb(246, 246, 246);
+    border: 1.5px solid black;
+    background-color: rgb(193, 168, 193);
     display: flex;
     align-items: center;
     justify-content: center;

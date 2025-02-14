@@ -1,3 +1,15 @@
+const boxOne = document.querySelector(".one");
+const boxTwo = document.querySelector(".two");
+const boxThree = document.querySelector(".three");
+const boxFour = document.querySelector(".four");
+const boxFive = document.querySelector(".five");
+const boxSix = document.querySelector(".six");
+const boxSeven = document.querySelector(".seven");
+const boxEight = document.querySelector(".eight");
+const boxNine = document.querySelector(".nine");
+const newGame = document.querySelector(".new-game");
+
+
 const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 console.log(typeof(gameBoard[0]));
@@ -6,44 +18,59 @@ console.log(typeof(gameBoard[0]));
 const playerOne = {name:"playerOne", piece: "x"};
 const playerTwo = {name:"playerTwo", piece: "o"};
 
-function gameFlow() {
-    //loops a player one turn and then a player two turn
-    for (let i = 0; i<9; i++) {
-        playerOneUpdate();
-        playerTwoUpdate();
-    }
-}
+let turn = 2;
+
+function gameFlow(choice) {
+   
+    
+    console.log(gameBoard);
+
+    //switch turns each time
+    if (turn % 2 == 0) {
+       playerOneUpdate(choice);
+    } else {
+       playerTwoUpdate(choice);
+    };
+
+    turn++;
+    console.log(gameBoard);
+    console.log(turn);
+};
+
+
+//CLICK
+//turn=0;
+//gameflow (handle choice)
+//
+//turn++
 
 //take P1's choice, check if valid, and update the array
 
-function playerOneUpdate() {
-    //choice BUTTONS
-    let oneChoice = prompt("What does player one choose?");
+function playerOneUpdate(choice) {
+    
 
     //check if choice is valid, update board, otherwise try again
-    if ((gameBoard[oneChoice] != "x") && (gameBoard[oneChoice] != "o")) {
-        gameBoard.splice(oneChoice, 1, "x");
+    if ((gameBoard[choice] != "x") && (gameBoard[choice] != "o")) {
+        gameBoard.splice(choice, 1, "x"); // MAKE THIS UPDATE THE DIV TOO
+        // boxOne.textContent = gameboard.INDEX put it right on there
     } else {
-        console.log("choose again");
-        playerOneUpdate();
+        alert("choose again");
+        playerOneUpdate(choice);
     };
 
-    //check if anyone won
     checkWin();
 
-    console.log(gameBoard);
 }
 
 //take P2's choice, check if valid, and update the array
 
-function playerTwoUpdate() {
-    let twoChoice = prompt("What does player two choose?");
+function playerTwoUpdate(choice) {
 
-    if ((gameBoard[twoChoice] != "x") && (gameBoard[twoChoice] != "o")) {
-        gameBoard.splice(twoChoice, 1, "o");
+    if ((gameBoard[choice] != "x") && (gameBoard[choice] != "o")) {
+        gameBoard.splice(choice, 1, "o");
     } else {
-        console.log("choose again");
-        playerTwoUpdate();
+        alert("choose again");
+        playerTwoUpdate(choice);
     };
 
     checkWin();
@@ -95,8 +122,149 @@ function checkWin() {
 
 function resetGame() {
     //Reset Board: remove 9 elements, starting at index 0, replace with original values.
-    gameBoard.splice(0, 9, 1, 2, 3, 4, 5, 6, 7, 8);
+    gameBoard.splice(0, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8);
 }
+
+// SET DIV HOVERS to player choice. Put this IN THE FUNCTION FOR EACH TURN????
+
+boxOne.addEventListener('click', () => {
+    if ((gameBoard[0] != "x") && (gameBoard[0] != "o")) {
+    choice = 0;
+    gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxTwo.addEventListener('click', () => {
+    if ((gameBoard[1] != "x") && (gameBoard[1] != "o")) {
+        choice = 1;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxThree.addEventListener('click', () => {
+    if ((gameBoard[2] != "x") && (gameBoard[2] != "o")) {
+        choice = 2;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxFour.addEventListener('click', () => {
+    if ((gameBoard[3] != "x") && (gameBoard[3] != "o")) {
+        choice = 3;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxFive.addEventListener('click', () => {
+    if ((gameBoard[4] != "x") && (gameBoard[4] != "o")) {
+        choice = 4;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxSix.addEventListener('click', () => {
+    if ((gameBoard[5] != "x") && (gameBoard[5] != "o")) {
+        choice = 5;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxSeven.addEventListener('click', () => {
+    if ((gameBoard[6] != "x") && (gameBoard[6] != "o")) {
+        choice = 6;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxEight.addEventListener('click', () => {
+    if ((gameBoard[7] != "x") && (gameBoard[7] != "o")) {
+        choice = 7;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+boxNine.addEventListener('click', () => {
+    if ((gameBoard[8] != "x") && (gameBoard[8] != "o")) {
+        choice = 8;
+        gameFlow(choice);
+    } else {
+        alert("choose again")
+    };
+});
+
+newGame.addEventListener('click', () => {
+    //player name information (dialogs and modals)
+    resetGame();
+    turn = 0;
+    console.log(gameBoard);
+});
+
+//P2
+
+// boxOne.addEventListener('click', () => {
+//     twoChoice = 0;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxTwo.addEventListener('click', () => {
+//     twoChoice = 1;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxThree.addEventListener('click', () => {
+//     twoChoice = 2;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxFour.addEventListener('click', () => {
+//     twoChoice = 3;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxFive.addEventListener('click', () => {
+//     twoChoice = 4;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxSix.addEventListener('click', () => {
+//     twoChoice = 5;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxSeven.addEventListener('click', () => {
+//     twoChoice = 6;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxEight.addEventListener('click', () => {
+//     twoChoice = 7;
+//     playerTwoUpdate(twoChoice);
+// });
+
+// boxNine.addEventListener('click', () => {
+//     twoChoice = 8;
+//     playerTwoUpdate(twoChoice);
+// });
+
+
+
+
 
 // gameFlow();
 
@@ -104,7 +272,16 @@ function resetGame() {
 
 
 
+// function assignTurn(choice) {
+//     if (turn % 2 ==0) {
+//         choice = oneChoice;
 
+//         playerOneUpdate(oneChoice);
+
+//     } else {
+//         choice ==  
+//     }
+// }
 
 // OLD CODE
 
