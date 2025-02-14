@@ -12,18 +12,12 @@ const newGame = document.querySelector(".new-game");
 
 const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-console.log(typeof(gameBoard[0]));
-
-
 const playerOne = {name:"playerOne", piece: "x"};
 const playerTwo = {name:"playerTwo", piece: "o"};
 
 let turn = 2;
 
-function gameFlow(choice) {
-   
-    
-    console.log(gameBoard);
+function gameFlow(choice) { 
 
     //switch turns each time
     if (turn % 2 == 0) {
@@ -33,6 +27,7 @@ function gameFlow(choice) {
     };
 
     turn++;
+
     console.log(gameBoard);
     console.log(turn);
 };
@@ -41,7 +36,9 @@ function playerOneUpdate(choice) {
 
     //check if choice is valid, update board, otherwise try again
     if ((gameBoard[choice] != "x") && (gameBoard[choice] != "o")) {
-        gameBoard.splice(choice, 1, "x"); // MAKE THIS UPDATE THE DIV TOO
+        //update array
+        gameBoard.splice(choice, 1, "x");
+        // update board HTML
         gameBoardUpdatePOne(choice);
     } else {
         alert("choose again");
@@ -68,7 +65,7 @@ function playerTwoUpdate(choice) {
     console.log(gameBoard);
 }
 
-//check if anyone won the game
+// update game board each time, I know there's a better way of doing this....
 
 function gameBoardUpdatePOne(choice) {
     if (choice == 0) {
@@ -114,6 +111,12 @@ function gameBoardUpdatePTwo (choice) {
     }
 }
 
+//check if anyone won the game
+
+//012
+//345
+//678
+
 function checkWin() {
     //check if play met win conditions, if so, alert them, then reset game board
 
@@ -132,6 +135,15 @@ function checkWin() {
     } else if ((gameBoard[2] == "x") && (gameBoard[4]=="x") && (gameBoard[6]=="x")) {
         alert("player one wins!")
         resetGame();
+    } else if ((gameBoard[0] == "x") && (gameBoard[3]=="x") && (gameBoard[6]=="x")) {
+        alert("player one wins!")
+        resetGame();
+    } else if ((gameBoard[1] == "x") && (gameBoard[4]=="x") && (gameBoard[7]=="x")) {
+        alert("player one wins!")
+        resetGame();
+    } else if ((gameBoard[2] == "x") && (gameBoard[5]=="x") && (gameBoard[8]=="x")) {
+        alert("player one wins!")
+        resetGame();
     } else if ((gameBoard[0] == "o") && (gameBoard[1]=="o") && (gameBoard[2]=="o")) {
         alert("player two wins!")
         resetGame();
@@ -147,6 +159,15 @@ function checkWin() {
     } else if ((gameBoard[2] == "o") && (gameBoard[4]=="o") && (gameBoard[6]=="o")) {
         alert("player two wins!")
         resetGame();
+    } else if ((gameBoard[0] == "o") && (gameBoard[3]=="o") && (gameBoard[6]=="o")) {
+        alert("player two wins!")
+        resetGame();
+    } else if ((gameBoard[1] == "o") && (gameBoard[4]=="o") && (gameBoard[7]=="o")) {
+        alert("player two wins!")
+        resetGame();
+    } else if ((gameBoard[2] == "o") && (gameBoard[5]=="o") && (gameBoard[8]=="o")) {
+        alert("player two wins!")
+        resetGame();
     } else if ((gameBoard[0] != 0) && (gameBoard[1] != 1) && (gameBoard[2] != 2) && (gameBoard[3] != 3) && (gameBoard[4] != 4) && (gameBoard[5] != 5) && (gameBoard[6] != 6) && (gameBoard[7] != 7) && (gameBoard[8] != 8)) {
         alert("it's a tie!");
         resetGame();
@@ -157,6 +178,7 @@ function checkWin() {
 function resetGame() {
     //Reset Board: remove 9 elements, starting at index 0, replace with original values.
     gameBoard.splice(0, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8);
+    //reset divs
     boxOne.textContent="";
     boxTwo.textContent="";
     boxThree.textContent="";
@@ -166,6 +188,9 @@ function resetGame() {
     boxSeven.textContent="";
     boxEight.textContent="";
     boxNine.textContent="";
+    
+    //restart turns
+    turn = 2;
 }
 
 // SET DIV HOVERS to player choice. Put this IN THE FUNCTION FOR EACH TURN????
