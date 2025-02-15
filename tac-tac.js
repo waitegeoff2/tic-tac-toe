@@ -10,6 +10,10 @@ const boxNine = document.querySelector(".nine");
 const newGame = document.querySelector(".new-game");
 const gameStatus = document.querySelector(".status");
 
+
+// put in MODULE- https://github.com/njcos/odin-tictactoe/blob/main/script.js 
+//SOLVE LAST DISPLAY ISSUE
+
 const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 const playerOne = {name:"playerOne", piece: "x"};
@@ -17,7 +21,7 @@ const playerTwo = {name:"playerTwo", piece: "o"};
 
 let turn = 2;
 
-function gameFlow(choice) { 
+function gameFlow(choice) {
 
     //switch turns each time
     if (turn % 2 == 0) {
@@ -72,55 +76,38 @@ function checkWin() {
 
     if ((gameBoard[0] == "x") && (gameBoard[1]=="x") && (gameBoard[2]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[3] == "x") && (gameBoard[4]=="x") && (gameBoard[5]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[6] == "x") && (gameBoard[7]=="x") && (gameBoard[8]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[0] == "x") && (gameBoard[4]=="x") && (gameBoard[8]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[2] == "x") && (gameBoard[4]=="x") && (gameBoard[6]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[0] == "x") && (gameBoard[3]=="x") && (gameBoard[6]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[1] == "x") && (gameBoard[4]=="x") && (gameBoard[7]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[2] == "x") && (gameBoard[5]=="x") && (gameBoard[8]=="x")) {
         alert("player one wins!")
-        resetGame();
     } else if ((gameBoard[0] == "o") && (gameBoard[1]=="o") && (gameBoard[2]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[3] == "o") && (gameBoard[4]=="o") && (gameBoard[5]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[6] == "o") && (gameBoard[7]=="o") && (gameBoard[8]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[0] == "o") && (gameBoard[4]=="o") && (gameBoard[8]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[2] == "o") && (gameBoard[4]=="o") && (gameBoard[6]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[0] == "o") && (gameBoard[3]=="o") && (gameBoard[6]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[1] == "o") && (gameBoard[4]=="o") && (gameBoard[7]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[2] == "o") && (gameBoard[5]=="o") && (gameBoard[8]=="o")) {
         alert("player two wins!")
-        resetGame();
     } else if ((gameBoard[0] != 0) && (gameBoard[1] != 1) && (gameBoard[2] != 2) && (gameBoard[3] != 3) && (gameBoard[4] != 4) && (gameBoard[5] != 5) && (gameBoard[6] != 6) && (gameBoard[7] != 7) && (gameBoard[8] != 8)) {
-        alert("it's a tie!");
-        resetGame();
+        alert("it's a tie!");       
     }
     // Tie condition: none of the array items equal their original numbers.
 }
