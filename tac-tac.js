@@ -184,6 +184,7 @@ function resetGame() {
     
 }
 
+// to update names by filling out form
 
 function updateName(event) {
     event.preventDefault();
