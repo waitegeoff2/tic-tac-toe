@@ -11,8 +11,16 @@ const newGame = document.querySelector(".new-game");
 const gameStatus = document.querySelector(".status");
 
 
-// put in MODULE- https://github.com/njcos/odin-tictactoe/blob/main/script.js 
-//SOLVE LAST DISPLAY ISSUE
+// Below is a module. I didn't add it but this is where it would go. 
+
+// const gameGrid = (function() {
+//     const board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+//     const gameBoard = () => board;
+
+//     return {gameBoard};
+
+// })();
 
 const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -68,7 +76,7 @@ function playerTwoUpdate(choice) {
         playerTwoUpdate(choice);
     };
 
-    checkWin();
+    checkWin(); 
 }
 
 function checkWin() {
