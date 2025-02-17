@@ -9,6 +9,8 @@ const boxEight = document.querySelector(".eight");
 const boxNine = document.querySelector(".nine");
 const newGame = document.querySelector(".new-game");
 const gameStatus = document.querySelector(".status");
+const nameForm = document.querySelector("#add-name-form");
+const submitButton = document.querySelector(".submit-button");
 
 
 // Below is a module. I didn't add it but this is where it would go. 
@@ -34,10 +36,10 @@ function gameFlow(choice) {
     //switch turns each time
     if (turn % 2 == 0) {
        playerOneUpdate(choice);
-       gameStatus.textContent = "Player two's turn"
+       gameStatus.textContent = ((playerTwo.name) + "'s turn");
     } else {
        playerTwoUpdate(choice);
-       gameStatus.textContent = "Player one's turn"
+       gameStatus.textContent = ((playerOne.name) + "'s turn");
     };
 
     turn++;
@@ -181,6 +183,21 @@ function resetGame() {
     boxNine.textContent="";
     
 }
+
+
+function updateName(event) {
+    event.preventDefault();
+    
+        const p1Name = document.querySelector("#p1-name");
+        const p2Name = document.querySelector("#p2-name");
+
+        playerOne.name = p1Name.value;
+        playerTwo.name = p2Name.value;
+
+        nameForm.reset();
+};
+
+nameForm.addEventListener("submit", updateName); 
 
 // Each div click = choice.
 
